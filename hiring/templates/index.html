@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<!-- Hero Section -->
+<section class="hero bg-primary text-white text-center py-5">
+    <div class="container">
+        <!-- <img src="path/to/your/image.jpg" alt="Hero Image"> -->
+        <h1 class="display-4">Find Your Dream Job</h1>
+        <p class="lead">Discover the latest job opportunities in the tech industry.</p>
+        {% if user.is_authenticated %}
+            <a href="/jobs" class="btn btn-light btn-lg">Find Jobs</a>
+        {% else %}
+            <a href="/register" class="btn btn-light btn-lg">Sign Up Now</a>
+            <a href="/login" class="btn btn-light btn-lg">Login</a>
+        {% endif %}
+    </div>
+</section>
+
+<!-- Features Section -->
+<section class="features py-5">
+    <div class="container">
+        <div class="row text-center">
+            <div class="col-md-4 mb-4">
+                <i class="bi bi-briefcase feature-icon"></i>
+                <h3>Wide Range of Jobs</h3>
+                <p>Explore a diverse range of job openings from top companies.</p>
+            </div>
+            <div class="col-md-4 mb-4">
+                <i class="bi bi-clock feature-icon"></i>
+                <h3>Quick and Easy</h3>
+                <p>Apply to jobs with just a few clicks and save time in your job search.</p>
+            </div>
+            <div class="col-md-4 mb-4">
+                <i class="bi bi-shield feature-icon"></i>
+                <h3>Safe and Secure</h3>
+                <p>Your data is protected, and we ensure a secure job search experience.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+{% endblock %}
