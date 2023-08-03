@@ -3,6 +3,8 @@
 {% extends 'base.html' %}
 
 {% block content %}
+{% load blog_tags %}
+{% load static %}
     <h1>Job List</h1>
     {% for job in jobs %}
     <div class="job-container">
@@ -14,32 +16,11 @@
             <div class="skill-box">{{ skill }}</div>
             {% endfor %}
         </div>
-        <p>{{ job.description }}</p>
-    </div>
+        <form action="{% url 'apply' %}" method="POST">
+            {% csrf_token %}
+            <input type="hidden" name="job_id" value="{{ job.id }}">
+            <button type="submit" class="apply-button">Apply</button>
+        </form>
+    </div>    
     {% endfor %}
-    <style>
-        /* Additional styles specific to job_list.html */
-        .job-container {
-            border: 1px solid #ccc;
-            padding: 10px;
-            margin-bottom: 10px;
-            /* Add any additional styles you want here */
-        }
-
-        .skills-container {
-            display: flex;
-            flex-wrap: wrap;
-            margin-top: 10px;
-            /* Add any additional styles you want here */
-        }
-
-        .skill-box {
-            background-color: #f0f0f0;
-            border: 1px solid #ccc;
-            padding: 5px;
-            margin-right: 5px;
-            margin-bottom: 5px;
-            /* Add any additional styles you want here */
-        }
-    </style>
 {% endblock %}

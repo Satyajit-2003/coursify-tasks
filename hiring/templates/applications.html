@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <div class="container">
+    <div class="row">
+      <div class="col-md-8 offset-md-2">
+        <h1 class="my-4">Applications</h1>
+        {% if applications %}
+          <ul class="list-group">
+            {% for application in applications %}
+            <li class="list-group-item">
+              <h5>Job Title: {{ application.job.title }}</h5>
+              <p><strong>Name:</strong> {{ application.name }}</p>
+              <p><strong>Email:</strong> {{ application.email }}</p>
+              <p><strong>Skills:</strong> {{ application.skills }}</p>
+              <p><strong>Resume Link:</strong> <a href="{{ application.resume }}">{{ application.resume }}</a></p>
+              <p><strong>CV Link:</strong> <a href="{{ application.cv }}">{{ application.cv }}</a></p>
+              <p><strong>Application Date:</strong> {{ application.application_date }}</p>
+            </li>
+            {% endfor %}
+          </ul>
+        {% else %}
+          <p>No applications submitted yet.</p>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+{% endblock %}
