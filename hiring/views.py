@@ -42,8 +42,6 @@ def logout_view(request):
     return redirect('home')
 
 def job_list(request):
-    if not request.user.is_authenticated:
-        return redirect('login')
     jobs = Job.objects.all()
     return render(request, 'job_list.html', {'jobs': jobs, 'user': request.user})
 
@@ -73,5 +71,5 @@ def apply(request):
 def applications(request):
     if not request.user.is_authenticated:
         return redirect('login')
-    applications = JobApplication.objects.filter(candidate = CustomUser.objects.filter(username=request.user.username).first())
+    applications = JobApplication.objects.filter(candidate = CustomUser.objects.filter(username=request.user.username).first()).order_by('-application_date')
     return render(request, 'applications.html', {'applications': applications, 'user': request.user})

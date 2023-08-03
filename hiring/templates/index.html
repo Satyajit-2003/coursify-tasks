@@ -9,8 +9,9 @@
         <p class="lead">Discover the latest job opportunities in the tech industry.</p>
         {% if user.is_authenticated %}
             <a href="/jobs" class="btn btn-light btn-lg">Find Jobs</a>
+            <a href="/applications" class="btn btn-light btn-lg">Your Applications</a>
         {% else %}
-            <a href="/register" class="btn btn-light btn-lg">Sign Up Now</a>
+            <a href="/jobs" class="btn btn-light btn-lg">Find Jobs</a>
             <a href="/login" class="btn btn-light btn-lg">Login</a>
         {% endif %}
     </div>
